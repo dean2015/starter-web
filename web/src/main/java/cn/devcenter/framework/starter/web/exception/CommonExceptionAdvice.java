@@ -3,8 +3,7 @@ package cn.devcenter.framework.starter.web.exception;
 import cn.devcenter.model.exception.ApplicationException;
 import cn.devcenter.model.exception.BusinessException;
 import cn.devcenter.model.result.AjaxResult;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
@@ -27,9 +26,8 @@ import java.util.Set;
 
 @ControllerAdvice
 @ResponseBody
+@Slf4j
 public class CommonExceptionAdvice {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CommonExceptionAdvice.class);
 
     /**
      * 400 - Bad Request
@@ -37,7 +35,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public AjaxResult<Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
-        LOGGER.error("缺少请求参数", e);
+        log.error("缺少请求参数", e);
         return AjaxResult.newInstance().fail("缺少请求参数");
     }
 
@@ -47,7 +45,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public AjaxResult<Object> handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
-        LOGGER.error("参数解析失败", e);
+        log.error("参数解析失败", e);
         return AjaxResult.newInstance().fail("参数解析失败");
     }
 
@@ -57,7 +55,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public AjaxResult<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        LOGGER.error("参数验证失败", e);
+        log.error("参数验证失败", e);
         BindingResult result = e.getBindingResult();
         FieldError error = result.getFieldError();
         String field = error.getField();
@@ -72,7 +70,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BindException.class)
     public AjaxResult<Object> handleBindException(BindException e) {
-        LOGGER.error("参数绑定失败", e);
+        log.error("参数绑定失败", e);
         BindingResult result = e.getBindingResult();
         FieldError error = result.getFieldError();
         String field = error.getField();
@@ -87,7 +85,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
     public AjaxResult<Object> handleServiceException(ConstraintViolationException e, HttpServletRequest request) {
-        LOGGER.error("参数验证失败. uri: " + request.getRequestURI(), e);
+        log.error("参数验证失败. uri: " + request.getRequestURI(), e);
         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
         ConstraintViolation<?> violation = violations.iterator().next();
         String message = violation.getMessage();
@@ -100,7 +98,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ValidationException.class)
     public AjaxResult<Object> handleValidationException(ValidationException e, HttpServletRequest request) {
-        LOGGER.error("参数验证失败. uri: " + request.getRequestURI(), e);
+        log.error("参数验证失败. uri: " + request.getRequestURI(), e);
         return AjaxResult.newInstance().fail("参数验证失败");
     }
 
@@ -110,7 +108,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public AjaxResult<Object> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e, HttpServletRequest request) {
-        LOGGER.error("不支持当前请求方法. uri: " + request.getRequestURI(), e);
+        log.error("不支持当前请求方法. uri: " + request.getRequestURI(), e);
         return AjaxResult.newInstance().fail("不支持当前请求方法");
     }
 
@@ -120,7 +118,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public AjaxResult<Object> handleHttpMediaTypeNotSupportedException(Exception e, HttpServletRequest request) {
-        LOGGER.error("不支持当前媒体类型. uri: " + request.getRequestURI(), e);
+        log.error("不支持当前媒体类型. uri: " + request.getRequestURI(), e);
         return AjaxResult.newInstance().fail("不支持当前媒体类型");
     }
 
@@ -130,7 +128,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(BusinessException.class)
     public AjaxResult<BusinessException> handleServiceException(BusinessException e) {
-        LOGGER.error("未处理的业务异常", e);
+        log.error("未处理的业务异常", e);
         return AjaxResult.newInstance(BusinessException.class).fail("服务运行异常");
     }
 
@@ -140,7 +138,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(ApplicationException.class)
     public AjaxResult<ApplicationException> handleServiceException(ApplicationException e) {
-        LOGGER.error("未处理的非业务异常", e);
+        log.error("未处理的非业务异常", e);
         return AjaxResult.newInstance(ApplicationException.class).fail("服务运行异常");
     }
 
@@ -150,7 +148,7 @@ public class CommonExceptionAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     public AjaxResult<Object> handleException(Throwable e) {
-        LOGGER.error("服务器未知异常", e);
+        log.error("服务器未知异常", e);
         return AjaxResult.newInstance().fail("服务器未知异常");
     }
 

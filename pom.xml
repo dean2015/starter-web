@@ -18,6 +18,13 @@
         <module>web-jetty</module>
     </modules>
 
+    <developers>
+        <developer>
+            <name>Gao Song</name>
+            <email>zhgmu@sina.com</email>
+        </developer>
+    </developers>
+
     <properties>
         <framework.version>1.0.0</framework.version>
         <jdk.version>1.8</jdk.version>
@@ -40,17 +47,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

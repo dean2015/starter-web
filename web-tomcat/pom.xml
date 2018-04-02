@@ -11,6 +11,13 @@
 
     <artifactId>web-tomcat</artifactId>
 
+    <developers>
+        <developer>
+            <name>Gao Song</name>
+            <email>zhgmu@sina.com</email>
+        </developer>
+    </developers>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -19,6 +26,11 @@
         <dependency>
             <groupId>cn.devcenter.framework</groupId>
             <artifactId>web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.devcenter.framework</groupId>
+            <artifactId>swagger</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 </project>

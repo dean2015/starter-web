@@ -45,5 +45,9 @@
             <groupId>cn.devcenter.framework</groupId>
             <artifactId>xss-defender</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.devcenter.framework</groupId>
+            <artifactId>error-loader</artifactId>
+        </dependency>
     </dependencies>
 </project>

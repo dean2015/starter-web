@@ -44,6 +44,16 @@
                 <artifactId>web</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.devcenter.framework</groupId>
+                <artifactId>web-tomcat</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.devcenter.framework</groupId>
+                <artifactId>web-jetty</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

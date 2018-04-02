@@ -30,7 +30,10 @@
         <dependency>
             <groupId>cn.devcenter.framework</groupId>
             <artifactId>swagger</artifactId>
-            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.devcenter.framework</groupId>
+            <artifactId>xss-defender</artifactId>
         </dependency>
     </dependencies>
 </project>

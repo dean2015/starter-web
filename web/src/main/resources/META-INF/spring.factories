@@ -1,4 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 cn.devcenter.framework.starter.web.config.property.StaticResourceMappingProperties,\
 cn.devcenter.framework.starter.web.config.StaticConfig,\
-cn.devcenter.framework.starter.web.config.WebExceptionConfig
+cn.devcenter.framework.starter.web.config.WebExceptionConfig,\
+cn.devcenter.framework.starter.web.config.property.DefaultViewProperties,\
+cn.devcenter.framework.starter.web.config.DefaultView

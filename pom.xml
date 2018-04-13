@@ -25,11 +25,6 @@
         </developer>
     </developers>
 
-    <properties>
-        <framework.version>1.0.0</framework.version>
-        <jdk.version>1.8</jdk.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>

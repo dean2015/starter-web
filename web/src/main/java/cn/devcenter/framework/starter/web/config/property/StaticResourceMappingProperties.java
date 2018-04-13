@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
 @ConfigurationProperties(prefix = StaticResourceMappingProperties.PREFIX)
 public class StaticResourceMappingProperties {
 
